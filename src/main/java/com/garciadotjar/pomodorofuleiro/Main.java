@@ -3,6 +3,7 @@ package com.garciadotjar.pomodorofuleiro;
 import com.garciadotjar.pomodorofuleiro.app.PomodoroApplication;
 import com.garciadotjar.pomodorofuleiro.config.Config;
 import com.garciadotjar.pomodorofuleiro.config.ConfigManager;
+import com.garciadotjar.pomodorofuleiro.service.Cronometro;
 import com.garciadotjar.pomodorofuleiro.service.Temporizador;
 import javafx.application.Application;
 
@@ -17,7 +18,18 @@ public class Main {
 
         /*
         TODA A INTERFACE GRAFICA
+
            TO-DO LIST
+        */
+
+
+
+
+
+
+        /*Cronometro cronometro = new Cronometro();
+        cronometro.iniciar();
+        cronometro.parar();
         */
 
         //TESTE 01. CONTADOR JA ESTA FUNCIONANDO
