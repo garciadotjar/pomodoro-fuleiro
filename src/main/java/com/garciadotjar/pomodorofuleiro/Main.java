@@ -10,9 +10,9 @@ import javafx.application.Application;
 import java.time.Duration;
 
 public class Main {
-
+    private static ConfigManager configManager = new ConfigManager(new Config());
     public static void main(String[] args) {
-        ConfigManager configManager = new ConfigManager(new Config());
+
         configManager.importConfig();
         Application.launch(PomodoroApplication.class, args);
 
@@ -36,8 +36,11 @@ public class Main {
 //        System.out.println("asd");
 //        configManager.getConfig().setTempoEstudo(Duration.ofMinutes(7));
 //        configManager.exportConfig();
-//        Temporizador temporizador = new Temporizador(configManager.getConfig().getTempoEstudo());
-//        temporizador.iniciar();
+//
 
+    }
+
+    public static ConfigManager getConfigManager() {
+        return configManager;
     }
 }

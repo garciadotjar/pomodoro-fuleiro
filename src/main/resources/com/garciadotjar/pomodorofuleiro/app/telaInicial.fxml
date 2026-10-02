@@ -1,16 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<?import javafx.scene.text.Text?>
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaInicialController"
-            prefHeight="400.0" prefWidth="600.0">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaInicialController">
 
+   <children>
+      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
 
-</AnchorPane>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="110.0" StackPane.alignment="CENTER">
+
+               <children>
+            <Label fx:id="labelTempo" text="Label">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin></Label>
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               <children>
+      
+                        <Button fx:id="descansar" mnemonicParsing="false" text="Descansar" />
+                  <Button fx:id="estudar" mnemonicParsing="false" text="Estudar" />
+                  <Button fx:id="comecar" mnemonicParsing="false" onAction="#comecarAction" text="Começar" />
+               </children>
+            </HBox>
+
+               </children>
+         <padding>
+            <Insets bottom="100.0" left="5.0" right="5.0" top="100.0" />
+         </padding>
+
+            </VBox>
+
+   </children>
+
+</StackPane>

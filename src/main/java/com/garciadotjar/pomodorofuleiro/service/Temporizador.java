@@ -15,13 +15,13 @@ public class Temporizador {
             Executors.newSingleThreadScheduledExecutor();
 
     private final Duration duration;
-    //private final Label label;
+    private final Label label;
 
     private ScheduledFuture<?> task;
 
-    public Temporizador(Duration duration){//, Label label) {
+    public Temporizador(Duration duration, Label label) {
         this.duration = duration;
-        //this.label = label;
+        this.label = label;
     }
 
     public void iniciar() {
@@ -41,9 +41,9 @@ public class Temporizador {
                             restanteNanos / 1_000_000_000.0
                     ));
 
-            //Platform.runLater(() -> { USAR COM O JAVAFX
-                System.out.println(formatar(segundosRestantes));
-            //});
+            Platform.runLater(() -> {
+                label.setText(formatar(segundosRestantes));
+            });
 
             if (restanteNanos <= 0) {
 

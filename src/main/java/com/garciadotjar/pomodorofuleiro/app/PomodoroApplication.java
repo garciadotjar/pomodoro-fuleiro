@@ -6,7 +6,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+
 
 import java.io.File;
 import java.io.IOException;
@@ -18,19 +20,22 @@ public class PomodoroApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Pomodoro Fuleiro");
-        Scene scene = new Scene(telaInicial());
+        stage.setResizable(false);
+        Scene scene = new Scene(telaInicial(), 322, 559);
         scene.getStylesheets().add(Objects.requireNonNull(getClass().getResource("main.css")).toExternalForm());
 
-        //COLOCAR LOGO
-        //Image icon = new Image(
-        //        new File("LOGO PATH").toURI().toString()
-        //);
-        //stage.getIcons().add(icon);
+        Image icon = new Image(
+                getClass().getResource("icon.png").toExternalForm()
+        );
+        stage.getIcons().add(icon);
 
-        
         stage.setScene(scene);
         stage.show();
     }
+
+
+
+    // ------------- telas
 
     private Parent telaInicial() throws IOException {
         FXMLLoader loader = new FXMLLoader(
