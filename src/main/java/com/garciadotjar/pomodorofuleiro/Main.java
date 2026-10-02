@@ -17,9 +17,8 @@ public class Main {
         Application.launch(PomodoroApplication.class, args);
 
         /*
-        TODA A INTERFACE GRAFICA
-
-           TO-DO LIST
+        FAZER TODA A INTERFACE GRAFICA FUNCIONAR COM O CÓDIGO DO JEITO MAIS SIMPLES POSSÍVEL
+        DEPOIS, FAZER O DESIGN DA INTERFACE
         */
 
 

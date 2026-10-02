@@ -12,7 +12,7 @@ public class Cronometro {
 
     //private final Label label;
 
-    private ScheduledFuture<?> task;
+    private ScheduledFuture<?> tarefa;
 
     public Cronometro(){//, Label label) {
         //this.label = label;
@@ -55,8 +55,8 @@ public class Cronometro {
     }
 
     public void parar() {
-        if (task != null) {
-            task.cancel(false);
+        if (tarefa != null) {
+            tarefa.cancel(false);
         }
 
         scheduler.shutdownNow();

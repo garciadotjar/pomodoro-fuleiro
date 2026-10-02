@@ -1,6 +1,7 @@
 package com.garciadotjar.pomodorofuleiro.controller;
 
 import com.garciadotjar.pomodorofuleiro.Main;
+import com.garciadotjar.pomodorofuleiro.app.PomodoroApplication;
 import com.garciadotjar.pomodorofuleiro.config.ConfigManager;
 import com.garciadotjar.pomodorofuleiro.service.Temporizador;
 import javafx.fxml.FXML;
@@ -29,7 +30,7 @@ public class TelaInicialController {
 
     @FXML
     private void comecarAction(){
-        Temporizador temporizador = new Temporizador(configManager.getConfig().getTempoEstudo(), labelTempo);
+        Temporizador temporizador = new Temporizador(configManager.getConfig().getTempoEstudo(), labelTempo, this);
         temporizador.iniciar();
     }
 
@@ -38,5 +39,14 @@ public class TelaInicialController {
         descansar.setVisible(false);
         estudar.setManaged(false);
         estudar.setVisible(false);
+    }
+
+    public void telaTempoAcabou(){
+        descansar.setManaged(true);
+        descansar.setVisible(true);
+        estudar.setManaged(true);
+        estudar.setVisible(true);
+        comecar.setManaged(false);
+        comecar.setVisible(false);
     }
 }

@@ -1,5 +1,6 @@
 package com.garciadotjar.pomodorofuleiro.service;
 
+import com.garciadotjar.pomodorofuleiro.controller.TelaInicialController;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 
@@ -16,12 +17,14 @@ public class Temporizador {
 
     private final Duration duration;
     private final Label label;
+    private final TelaInicialController telaInicialController;
 
-    private ScheduledFuture<?> task;
+    private ScheduledFuture<?> tarefa;
 
-    public Temporizador(Duration duration, Label label) {
+    public Temporizador(Duration duration, Label label, TelaInicialController telaInicialController) {
         this.duration = duration;
         this.label = label;
+        this.telaInicialController = telaInicialController;
     }
 
     public void iniciar() {
@@ -50,9 +53,7 @@ public class Temporizador {
                 tarefa[0].cancel(false);
                 scheduler.shutdownNow();
 
-            //    Platform.runLater(() -> { USAR COM O JAVAFX
-                    System.out.println("tempo acabou");
-                //    });
+                telaInicialController.telaTempoAcabou();
             }
 
         }, 0, 1, TimeUnit.SECONDS);
@@ -71,10 +72,11 @@ public class Temporizador {
     }
 
     public void cancelar() {
-        if (task != null) {
-            task.cancel(false);
+        if (tarefa != null) {
+            tarefa.cancel(false);
         }
 
         scheduler.shutdownNow();
+        telaInicialController.telaTempoAcabou();
     }
 }

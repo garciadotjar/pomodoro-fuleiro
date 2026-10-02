@@ -1,6 +1,7 @@
 package com.garciadotjar.pomodorofuleiro.app;
 
 import com.garciadotjar.pomodorofuleiro.config.ConfigManager;
+import com.garciadotjar.pomodorofuleiro.controller.TelaInicialController;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,6 +17,7 @@ import java.util.Objects;
 
 
 public class PomodoroApplication extends Application {
+    private TelaInicialController telaInicialController;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -41,6 +43,9 @@ public class PomodoroApplication extends Application {
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("telaInicial.fxml")
         );
-        return loader.load();
+        Parent root = loader.load();
+        telaInicialController = loader.getController();
+        return root;
     }
+
 }
