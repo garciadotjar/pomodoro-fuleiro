@@ -45,7 +45,15 @@ public class PomodoroApplication extends Application {
         );
         Parent root = loader.load();
         telaInicialController = loader.getController();
+
         return root;
     }
 
+    //encerrar tudo ao fechar a janela
+    @Override
+    public void stop() {
+        if (telaInicialController != null) {
+            telaInicialController.encerrar();
+        }
+    }
 }

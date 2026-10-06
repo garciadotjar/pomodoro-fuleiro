@@ -14,29 +14,16 @@ public class Main {
     public static void main(String[] args) {
 
         configManager.importConfig();
+        //configManager.getConfig().setTempoEstudo(Duration.ofSeconds(10));
+        //configManager.getConfig().setTempoLivre(Duration.ofSeconds(7));
+        //configManager.exportConfig();
         Application.launch(PomodoroApplication.class, args);
-
         /*
-        FAZER TODA A INTERFACE GRAFICA FUNCIONAR COM O CÓDIGO DO JEITO MAIS SIMPLES POSSÍVEL
+        FAZER DE FORMA SIMPLES A TELA DE CONFIG FUNCIONAR
+        LABEL PRA MARCAR EM QUE ETAPA DO ESTUDO ESTAMOS (estudando, descansando...)
+        FAZER O CONTADOR DE TEMPO TOTAL DE ESTUDO
         DEPOIS, FAZER O DESIGN DA INTERFACE
         */
-
-
-
-
-
-
-        /*Cronometro cronometro = new Cronometro();
-        cronometro.iniciar();
-        cronometro.parar();
-        */
-
-        //TESTE 01. CONTADOR JA ESTA FUNCIONANDO
-//        System.out.println("asd");
-//        configManager.getConfig().setTempoEstudo(Duration.ofMinutes(7));
-//        configManager.exportConfig();
-//
-
     }
 
     public static ConfigManager getConfigManager() {

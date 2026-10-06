@@ -1,5 +1,8 @@
 package com.garciadotjar.pomodorofuleiro.service;
 
+import javafx.application.Platform;
+import javafx.scene.control.Label;
+
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledFuture;
@@ -10,32 +13,30 @@ public class Cronometro {
     private final ScheduledExecutorService scheduler =
             Executors.newSingleThreadScheduledExecutor();
 
-    //private final Label label;
+    private final Label label;
 
     private ScheduledFuture<?> tarefa;
 
-    public Cronometro(){//, Label label) {
-        //this.label = label;
+    public Cronometro(Label label) {
+        this.label = label;
     }
 
     public void iniciar() {
 
         final long inicio = System.nanoTime();
 
-        final ScheduledFuture<?>[] tarefa = new ScheduledFuture<?>[1];
+        tarefa = scheduler.scheduleAtFixedRate(() -> {
 
-        tarefa[0] = scheduler.scheduleAtFixedRate(() -> {
-
-            long decorrido = System.nanoTime() - inicio - 1_000_000_000;
+            long decorrido = System.nanoTime() - inicio;
 
             long segundosRestantes =
                     Math.max(0, (long) Math.ceil(
                             decorrido / 1_000_000_000.0
                     ));
 
-            //Platform.runLater(() -> { USAR COM O JAVAFX
-            System.out.println(formatar(segundosRestantes));
-            //});
+            Platform.runLater(() -> {
+                label.setText(formatar(segundosRestantes));
+            });
 
 
 
@@ -56,7 +57,12 @@ public class Cronometro {
 
     public void parar() {
         if (tarefa != null) {
-            tarefa.cancel(false);
+            tarefa.cancel(true);
+        }
+    }
+    public void encerrar() {
+        if (tarefa != null) {
+            tarefa.cancel(true);
         }
 
         scheduler.shutdownNow();
