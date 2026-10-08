@@ -1,6 +1,7 @@
 package com.garciadotjar.pomodorofuleiro.controller;
 
 import com.garciadotjar.pomodorofuleiro.Main;
+import com.garciadotjar.pomodorofuleiro.app.PomodoroApplication;
 import com.garciadotjar.pomodorofuleiro.config.ConfigManager;
 import com.garciadotjar.pomodorofuleiro.service.Cronometro;
 import com.garciadotjar.pomodorofuleiro.service.Temporizador;
@@ -16,6 +17,7 @@ public class TelaInicialController {
     private ConfigManager configManager = Main.getConfigManager();
     private long remainingNanos;
     private boolean estudando;
+    private PomodoroApplication application;
 
     @FXML
     private Button descansar;
@@ -106,7 +108,7 @@ public class TelaInicialController {
         cronometro.parar();
         temporizador.cancelar(false);
         temporizador.encerrar();
-        this.temporizador = new Temporizador(configManager.getConfig().getTempoLivre(), labelTempo, this);
+        this.temporizador = new Temporizador(configManager.getConfig().getTempoEstudo(), labelTempo, this);
         temporizador.iniciar();
         telaRodando();
         estudando = true;
@@ -114,6 +116,11 @@ public class TelaInicialController {
 
     }
 
+
+    @FXML
+    private void configuracoesAction() {
+        application.abrirConfiguracoes();
+    }
 
     // TELAS
 
@@ -231,7 +238,7 @@ public class TelaInicialController {
     }
     //------------------- set label para config atual
 
-    private void updateLabelConfig(){
+    public void updateLabelConfig(){
         labelTempo.setText(Temporizador.formatar(Math.max(0, (long) Math.ceil(
                 configManager.getConfig().getTempoEstudo().toNanos() / 1_000_000_000.0
         ))));
@@ -240,6 +247,11 @@ public class TelaInicialController {
     public void setRemainingNanos(long remainingNanos) {
         this.remainingNanos = remainingNanos;
     }
+
+    public void setApplication(PomodoroApplication application) {
+        this.application = application;
+    }
+
 
     public boolean isEstudando() {
         return estudando;

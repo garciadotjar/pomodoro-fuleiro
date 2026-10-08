@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="559.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaConfigController">
+
+   <!-- BOTÃO VOLTAR -->
+   <Button fx:id="voltar" mnemonicParsing="false" onAction="#voltarAction" prefHeight="35.0" prefWidth="40.0" text="←" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+
+
+   <VBox alignment="TOP_LEFT" spacing="35.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="50.0">
+
+      <!-- TÍTULO -->
+      <Text text="Configurações">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Text>
+
+
+      <!-- TEMPO DE ESTUDO -->
+      <VBox spacing="10.0">
+
+         <Text text="Tempo de Estudo">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+
+         <HBox alignment="CENTER_LEFT" spacing="8.0">
+
+            <Spinner fx:id="horaEstudo" prefHeight="30.0" prefWidth="80.0" />
+
+            <Text text="h">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+
+            <Spinner fx:id="minutoEstudo" prefHeight="30.0" prefWidth="80.0" />
+            <Text layoutX="98.0" layoutY="32.0" text="m">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+
+         </HBox>
+
+      </VBox>
+
+
+      <!-- TEMPO DE DESCANSO -->
+      <VBox spacing="10.0">
+
+         <Text text="Tempo de Descanso">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+
+         <HBox alignment="CENTER_LEFT" spacing="8.0">
+
+            <Spinner fx:id="horaDescanso" prefHeight="30.0" prefWidth="80.0" />
+
+            <Text text="h">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+
+            <Spinner fx:id="minutoDescanso" prefHeight="30.0" prefWidth="80.0" />
+            <Text layoutX="98.0" layoutY="32.0" text="m">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+
+         </HBox>
+
+      </VBox>
+
+
+      <!-- VOLUME DO ALARME -->
+      <VBox spacing="10.0">
+
+         <Text text="Volume do Alarme">
+            <font>
+               <Font size="16.0" />
+            </font>
+         </Text>
+
+         <HBox alignment="CENTER_LEFT" spacing="10.0">
+
+            <Slider fx:id="volumeAlarme" max="100" min="0" prefWidth="180.0" showTickLabels="false" showTickMarks="false" value="50" />
+
+            <Label fx:id="valorVolume" text="50%" />
+
+         </HBox>
+
+      </VBox>
+
+
+      <!-- BOTÃO SALVAR -->
+      <Button fx:id="salvarConfiguracoes" mnemonicParsing="false" onAction="#salvarConfiguracoesAction" prefHeight="35.0" prefWidth="242.0" text="Salvar Configurações" />
+
+   </VBox>
+
+</AnchorPane>

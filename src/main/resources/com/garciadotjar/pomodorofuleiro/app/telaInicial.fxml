@@ -4,36 +4,91 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="559.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaInicialController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity"
+           minHeight="-Infinity" minWidth="-Infinity"
+           prefHeight="559.0" prefWidth="322.0"
+           xmlns="http://javafx.com/javafx/17.0.12"
+           xmlns:fx="http://javafx.com/fxml/1"
+           fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaInicialController">
 
    <children>
+
       <AnchorPane prefHeight="200.0" prefWidth="200.0" />
 
-            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" spacing="110.0" StackPane.alignment="CENTER">
+      <VBox alignment="CENTER"
+            prefHeight="200.0"
+            prefWidth="100.0"
+            spacing="110.0"
+            StackPane.alignment="CENTER">
 
-               <children>
+         <children>
+
             <Label fx:id="labelTempo" text="Label">
                <VBox.margin>
                   <Insets />
-               </VBox.margin></Label>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="50.0">
+               </VBox.margin>
+            </Label>
+
+            <HBox alignment="CENTER"
+                  prefHeight="100.0"
+                  prefWidth="200.0"
+                  spacing="50.0">
+
                <children>
-      
-                  <Button fx:id="descansar" mnemonicParsing="false" onAction="#descansarAction" text="Descansar" />
-                  <Button fx:id="voltarEstudar" mnemonicParsing="false" onAction="#voltarEstudarAction" text="Voltar a Estudar" />
-                  <Button fx:id="estudar" mnemonicParsing="false" onAction="#estudarAction" text="Continuar Estudando" />
-                  <Button fx:id="comecar" mnemonicParsing="false" onAction="#comecarAction" text="Iniciar estudos" />
-                  <Button fx:id="pausar" mnemonicParsing="false" onAction="#pausarAction" text="Pausar" />
-                  <Button fx:id="continuar" mnemonicParsing="false" onAction="#continuarAction" text="Continuar" />
+                  <Button fx:id="descansar"
+                          mnemonicParsing="false"
+                          onAction="#descansarAction"
+                          text="Descansar" />
+
+                  <Button fx:id="voltarEstudar"
+                          mnemonicParsing="false"
+                          onAction="#voltarEstudarAction"
+                          text="Voltar a Estudar" />
+
+                  <Button fx:id="estudar"
+                          mnemonicParsing="false"
+                          onAction="#estudarAction"
+                          text="Continuar Estudando" />
+
+                  <Button fx:id="comecar"
+                          mnemonicParsing="false"
+                          onAction="#comecarAction"
+                          text="Iniciar estudos" />
+
+                  <Button fx:id="pausar"
+                          mnemonicParsing="false"
+                          onAction="#pausarAction"
+                          text="Pausar" />
+
+                  <Button fx:id="continuar"
+                          mnemonicParsing="false"
+                          onAction="#continuarAction"
+                          text="Continuar" />
                </children>
             </HBox>
 
-               </children>
+         </children>
+
          <padding>
-            <Insets bottom="100.0" left="5.0" right="5.0" top="100.0" />
+            <Insets bottom="100.0"
+                    left="5.0"
+                    right="5.0"
+                    top="100.0" />
          </padding>
 
-            </VBox>
+      </VBox>
+
+      <!-- Botão de configurações -->
+      <Button fx:id="configuracoes"
+              mnemonicParsing="false"
+              onAction="#configuracoesAction"
+              text="⚙"
+              style="-fx-background-color: transparent; -fx-font-size: 20px;"
+              StackPane.alignment="TOP_RIGHT">
+         <StackPane.margin>
+            <Insets top="8.0" right="8.0" />
+         </StackPane.margin>
+      </Button>
 
    </children>
 
