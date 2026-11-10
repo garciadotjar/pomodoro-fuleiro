@@ -1,18 +1,17 @@
 <a id="topo-readme"></a>
 
-# ⚠️⚠️ EM DESENVOLVIMENTO
 <div align="center">
-  <!-- adicionar logo do app -->
-
+    <img src="./docs/banner.png" alt="Pomodoro Fuleiro Banner" width="100%">
   <h1>🍅 Pomodoro Fuleiro</h1>
   <p>Timer Pomodoro, onde <strong>você decide</strong> quando descansar.</p>
 
-  <img src="https://img.shields.io/badge/Java-26-ED8B00?logo=openjdk&logoColor=white" alt="Java 21" />
+  <img src="https://img.shields.io/badge/Java-26-ED8B00?logo=openjdk&logoColor=white" alt="Java 26" />
   <img src="https://img.shields.io/badge/JavaFX-4B8BBE" alt="JavaFX" />
-  <img src="https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white" alt="Maven" />
+    <img src="https://img.shields.io/badge/CSS-663399?logo=css&logoColor=white" alt="CSS" />
+<img src="https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white" alt="Maven" />
+<br><br>
+<img src="./docs/printPrincipal.png" alt="Print do app" width="90%">
 </div>
-
-<!-- print principal do app -->
 
 ## Sumário
 
@@ -47,19 +46,17 @@ Quando o tempo de estudo acaba, o app **não te obriga a parar**. Você escolhe:
 
 Se você está muito focado em algo, está gostando do conteúdo, ou simplesmente quer continuar, por que parar? O app respeita o seu ritmo.
 
-<!-- foto com o timer em andamento -->
-<!--foto do fim de estudo, com botao de continuar e de continuar estudando-->
-<!-- foto configuracoes -->
-<!-- foto to-do list -->
-
+<div align="center">
+  <img src="./docs/imagem1.png" width="32%" alt="Imagem 1">
+  <img src="./docs/imagem2.png" width="32%" alt="Imagem 2">
+  <img src="./docs/imagem3.png" width="32%" alt="Imagem 3">
+</div>
 <p align="right"><a href="#topo-readme">↑ voltar ao topo</a></p>
 
 ---
 
 ## Como baixar
-EM DESENVOLVIMENTO
 
-<!--
 Os instaladores e o `.jar` estão na página de **[Releases](https://github.com/garciadotjar/pomodoro-fuleiro/releases)**.
 
 | Formato | Para quem | Como instalar / rodar                               |
@@ -69,7 +66,6 @@ Os instaladores e o `.jar` estão na página de **[Releases](https://github.com/
 | `.exe` | Windows | Baixe o arquivo e dê dois cliques para instalar     |
 | `.jar` | Qualquer sistema com Java instalado | `java -jar pomodoro-fuleiro-universal.jar`          |
 
--->
 <p align="right"><a href="#topo-readme">↑ voltar ao topo</a></p>
 
 ---
@@ -100,7 +96,7 @@ Os instaladores e o `.jar` estão na página de **[Releases](https://github.com/
 <p>
   <img src="https://img.shields.io/badge/Java_26-ED8B00?logo=openjdk&logoColor=white" alt="Java 21" />
   <img src="https://img.shields.io/badge/JavaFX-4B8BBE" alt="JavaFX" />
-  <img src="https://img.shields.io/badge/CSS-1572B6?logo=css3&logoColor=white" alt="CSS" />
+    <img src="https://img.shields.io/badge/CSS-663399?logo=css&logoColor=white" alt="CSS" />
   <img src="https://img.shields.io/badge/Maven-C71A36?logo=apachemaven&logoColor=white" alt="Maven" />
   <img src="https://img.shields.io/badge/IntelliJ_IDEA-000000?logo=intellijidea&logoColor=white" alt="IntelliJ IDEA" />
 </p>
