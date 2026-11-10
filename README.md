@@ -20,7 +20,7 @@
 - [Como baixar](#como-baixar)
 - [Requisitos para rodar](#requisitos-para-rodar)
 - [Linguagens e ferramentas utilizadas](#linguagens-e-ferramentas-utilizadas)
-
+  <br>
 ---
 
 ## Ideia inicial
