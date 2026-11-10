@@ -27,6 +27,8 @@
 
 O **Pomodoro Fuleiro** nasceu para melhorar o estudo com a técnica Pomodoro, mas sem a rigidez de um timer que te manda parar no meio de uma boa sessão de estudos.
 
+Além disso, ele conta com uma lista de tarefas integrada, onde você pode se organizar para realizar todas as atividades da forma mais otimizada possível.
+
 A ideia do Pomodoro Fuleiro foi inspirada pelo [Sween](https://www.youtube.com/@HenriqueSween)
 
 > **O método Pomodoro** foi criado por Francesco Cirillo. A ideia é dividir o estudo em blocos de foco (tradicionalmente 25 minutos) separados por pausas curtas (tradicionalmente 5 minutos). Isso ajuda a manter a concentração e evita o cansaço de estudar por horas sem parar.
