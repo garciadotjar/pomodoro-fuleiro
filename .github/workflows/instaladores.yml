@@ -1,0 +1,132 @@
+
+name: Gerar instaladores
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+
+  windows:
+    name: Gerar instalador Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Baixar código do projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 26
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '26'
+          cache: maven
+
+      - name: Instalar ferramentas de empacotamento
+        run: choco install wixtoolset --yes --no-progress
+
+      - name: Compilar projeto
+        run: mvn -B clean package
+
+      - name: Preparar dependências
+        run: |
+          New-Item -ItemType Directory -Force target/jpackage-input/lib
+          mvn -B dependency:copy-dependencies "-DincludeScope=runtime" "-DoutputDirectory=target/jpackage-input/lib"
+          Copy-Item target/pomodoro-fuleiro-1.0.0.jar target/jpackage-input/
+
+      - name: Gerar instalador Windows
+        run: |
+          jpackage `
+            --type exe `
+            --name "Pomodoro Fuleiro" `
+            --app-version 1.0.0 `
+            --vendor "Garcia" `
+            --description "Temporizador Pomodoro em que você decide seu ritmo." `
+            --icon packaging/windows/icon.ico `
+            --input target/jpackage-input `
+            --dest target/dist `
+            --main-jar pomodoro-fuleiro-1.0.0.jar `
+            --main-class com.garciadotjar.pomodorofuleiro.app.Main `
+            --win-menu `
+            --win-menu-group "Pomodoro Fuleiro" `
+            --win-shortcut
+
+      - name: Disponibilizar instalador Windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: Instalador-Windows
+          path: target/dist/*.exe
+
+  linux:
+    name: Gerar instaladores Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar código do projeto
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 26
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '26'
+          cache: maven
+
+      - name: Instalar ferramentas de empacotamento
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y fakeroot rpm
+
+      - name: Compilar projeto
+        run: mvn -B clean package
+
+      - name: Preparar dependências
+        run: |
+          mkdir -p target/jpackage-input/lib
+          mvn -B dependency:copy-dependencies -DincludeScope=runtime -DoutputDirectory=target/jpackage-input/lib
+          cp target/pomodoro-fuleiro-1.0.0.jar target/jpackage-input/
+
+      - name: Gerar instalador DEB
+        run: |
+          jpackage \
+            --type deb \
+            --name pomodoro-fuleiro \
+            --app-version 1.0.0 \
+            --vendor Garcia \
+            --description "Temporizador Pomodoro em que você decide seu ritmo." \
+            --icon packaging/linux/icon.png \
+            --input target/jpackage-input \
+            --dest target/dist \
+            --main-jar pomodoro-fuleiro-1.0.0.jar \
+            --main-class com.garciadotjar.pomodorofuleiro.app.Main \
+            --linux-shortcut \
+            --linux-menu-group "Utility"
+
+      - name: Gerar instalador RPM
+        run: |
+          jpackage \
+            --type rpm \
+            --name pomodoro-fuleiro \
+            --app-version 1.0.0 \
+            --vendor Garcia \
+            --description "Temporizador Pomodoro em que você decide seu ritmo." \
+            --icon packaging/linux/icon.png \
+            --input target/jpackage-input \
+            --dest target/dist \
+            --main-jar pomodoro-fuleiro-1.0.0.jar \
+            --main-class com.garciadotjar.pomodorofuleiro.app.Main \
+            --linux-shortcut \
+            --linux-menu-group "Utility"
+
+      - name: Disponibilizar instaladores Linux
+        uses: actions/upload-artifact@v4
+        with:
+          name: Instaladores-Linux
+          path: |
+            target/dist/*.deb
+            target/dist/*.rpm
