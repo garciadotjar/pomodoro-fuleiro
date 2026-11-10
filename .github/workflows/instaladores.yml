@@ -51,11 +51,10 @@ jobs:
             --input target/jpackage-input `
             --dest target/dist `
             --main-jar pomodoro-fuleiro-1.0.0.jar `
-            --main-class com.garciadotjar.pomodorofuleiro.app.Main `
+            --main-class com.garciadotjar.pomodorofuleiro.Main `
             --win-menu `
             --win-menu-group "Pomodoro Fuleiro" `
-            --win-shortcut `
-            --win-console
+            --win-shortcut 
 
       - name: Disponibilizar instalador Windows
         uses: actions/upload-artifact@v4
@@ -104,7 +103,7 @@ jobs:
             --input target/jpackage-input \
             --dest target/dist \
             --main-jar pomodoro-fuleiro-1.0.0.jar \
-            --main-class com.garciadotjar.pomodorofuleiro.app.Main \
+            --main-class com.garciadotjar.pomodorofuleiro.Main \
             --linux-shortcut \
             --linux-menu-group "Utility"
 
@@ -120,7 +119,7 @@ jobs:
             --input target/jpackage-input \
             --dest target/dist \
             --main-jar pomodoro-fuleiro-1.0.0.jar \
-            --main-class com.garciadotjar.pomodorofuleiro.app.Main \
+            --main-class com.garciadotjar.pomodorofuleiro.Main \
             --linux-shortcut \
             --linux-menu-group "Utility"
 

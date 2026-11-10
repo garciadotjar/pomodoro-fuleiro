@@ -68,7 +68,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.garciadotjar.pomodorofuleiro.app.Main</mainClass>
+                            <mainClass>com.garciadotjar.pomodorofuleiro.Main</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
@@ -84,7 +84,7 @@
                 <version>0.0.8</version>
                 <configuration>
                     <mainClass>
-                        com.garciadotjar.pomodorofuleiro.app.Main
+                        com.garciadotjar.pomodorofuleiro.Main
                     </mainClass>
                 </configuration>
             </plugin>
