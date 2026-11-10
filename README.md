@@ -66,17 +66,12 @@ Os instaladores e o `.jar` estão na página de **[Releases](https://github.com/
 | `.deb` | Debian, Ubuntu e derivados | `sudo apt install ./pomodoro-fuleiro-installer.deb` |
 | `.rpm` | Fedora, openSUSE e derivados | `sudo dnf install ./pomodoro-fuleiro-installer.rpm` |
 | `.exe` | Windows | Baixe o arquivo e dê dois cliques para instalar     |
-| `.jar` | Qualquer sistema com Java instalado | `java -jar pomodoro-fuleiro-universal.jar`          |
 
 <p align="right"><a href="#topo-readme">↑ voltar ao topo</a></p>
 
 ---
 
 ## Requisitos para rodar
-
-### `.jar`
-
-- **Java 26** ou superior (JRE ou JDK) instalado.
 
 ### `.deb`
 
