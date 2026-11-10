@@ -54,7 +54,7 @@ jobs:
             --main-class com.garciadotjar.pomodorofuleiro.app.Main `
             --win-menu `
             --win-menu-group "Pomodoro Fuleiro" `
-            --win-shortcut
+            --win-shortcut `
             --win-console
 
       - name: Disponibilizar instalador Windows
