@@ -55,6 +55,7 @@ jobs:
             --win-menu `
             --win-menu-group "Pomodoro Fuleiro" `
             --win-shortcut
+            --win-console
 
       - name: Disponibilizar instalador Windows
         uses: actions/upload-artifact@v4
