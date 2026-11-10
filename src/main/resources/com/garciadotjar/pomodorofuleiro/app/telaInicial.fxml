@@ -2,94 +2,184 @@
 
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity"
-           minHeight="-Infinity" minWidth="-Infinity"
-           prefHeight="559.0" prefWidth="322.0"
-           xmlns="http://javafx.com/javafx/17.0.12"
-           xmlns:fx="http://javafx.com/fxml/1"
-           fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaInicialController">
+<HBox xmlns="http://javafx.com/javafx/17.0.12"
+      xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaInicialController">
 
    <children>
 
-      <AnchorPane prefHeight="200.0" prefWidth="200.0" />
+      <!-- Tela principal: cabeçalho, anel com o timer, ações e rodapé -->
+      <BorderPane maxHeight="-Infinity" maxWidth="-Infinity"
+                  minHeight="-Infinity" minWidth="-Infinity"
+                  prefHeight="640.0" prefWidth="380.0">
 
-      <VBox alignment="CENTER"
-            prefHeight="200.0"
-            prefWidth="100.0"
-            spacing="110.0"
-            StackPane.alignment="CENTER">
+         <top>
+            <HBox alignment="CENTER" spacing="8.0">
+               <padding>
+                  <Insets top="12.0" right="12.0" bottom="4.0" left="12.0" />
+               </padding>
+               <children>
+                  <Button fx:id="configuracoes" mnemonicParsing="false"
+                          onAction="#configuracoesAction"
+                          accessibleText="Abrir configurações"
+                          styleClass="btn-icone">
+                     <graphic>
+                        <!-- ícone de ajustes (desenhado em grade 24x24, sem depender de fonte do sistema) -->
+                        <SVGPath styleClass="icone"
+                                 content="M4 7h9 M17 7h3 M15 5a2 2 0 1 0 0 4a2 2 0 1 0 0 -4z M4 17h3 M11 17h9 M9 15a2 2 0 1 0 0 4a2 2 0 1 0 0 -4z" />
+                     </graphic>
+                     <tooltip><Tooltip text="Configurações" /></tooltip>
+                  </Button>
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <ImageView fitWidth="26.0" fitHeight="26.0" preserveRatio="true" smooth="true">
+                     <image><Image url="@icon.png" /></image>
+                  </ImageView>
+                  <Label text="Pomodoro Fuleiro" styleClass="marca" />
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <Button mnemonicParsing="false"
+                          onAction="#checklistAction"
+                          accessibleText="Mostrar ou esconder o checklist"
+                          styleClass="btn-icone">
+                     <graphic>
+                        <SVGPath styleClass="icone"
+                                 content="M10 6h10 M10 12h10 M10 18h10 M3.5 6.2l1.5 1.5l2.5 -3 M3.5 12.2l1.5 1.5l2.5 -3 M3.5 18.2l1.5 1.5l2.5 -3" />
+                     </graphic>
+                     <tooltip><Tooltip text="Checklist" /></tooltip>
+                  </Button>
+               </children>
+            </HBox>
+         </top>
+
+         <center>
+            <VBox alignment="TOP_CENTER" spacing="24.0">
+               <padding>
+                  <Insets top="12.0" right="28.0" left="28.0" />
+               </padding>
+               <children>
+
+                  <!-- Anel: o Pane de tamanho fixo impede que o arco "ande" quando encolhe -->
+                  <StackPane>
+                     <children>
+                        <Pane maxHeight="280.0" maxWidth="280.0" minHeight="280.0" minWidth="280.0"
+                              prefHeight="280.0" prefWidth="280.0">
+                           <children>
+                              <Circle centerX="140.0" centerY="140.0" radius="128.0" styleClass="anel-trilha" />
+                              <Arc fx:id="arcoProgresso" centerX="140.0" centerY="140.0"
+                                   radiusX="128.0" radiusY="128.0"
+                                   startAngle="90.0" length="-360.0" type="OPEN"
+                                   styleClass="anel-progresso" />
+                           </children>
+                        </Pane>
+
+                        <VBox alignment="CENTER" spacing="6.0" mouseTransparent="true">
+                           <children>
+                              <Label fx:id="labelTempo" text="25:00" styleClass="tempo" />
+                              <Label fx:id="labelEtapa" text="Etapa" styleClass="etapa" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
+
+                  <!-- Altura fixa para 2 botões: o anel não pula quando o número de botões muda -->
+                  <VBox alignment="TOP_CENTER" spacing="10.0"
+                        minHeight="114.0" prefHeight="114.0" maxHeight="114.0">
+                     <children>
+                        <Button fx:id="descansar" mnemonicParsing="false"
+                                onAction="#descansarAction" text="Descansar"
+                                styleClass="btn-primario" maxWidth="Infinity" />
+
+                        <Button fx:id="voltarEstudar" mnemonicParsing="false"
+                                onAction="#voltarEstudarAction" text="Voltar a Estudar"
+                                styleClass="btn-primario" maxWidth="Infinity" />
+
+                        <Button fx:id="estudar" mnemonicParsing="false"
+                                onAction="#estudarAction" text="Continuar Estudando"
+                                styleClass="btn-secundario" maxWidth="Infinity" />
+
+                        <Button fx:id="comecar" mnemonicParsing="false"
+                                onAction="#comecarAction" text="Iniciar estudos"
+                                styleClass="btn-primario" maxWidth="Infinity" />
+
+                        <!-- durante o foco o botão fica discreto: o timer é quem manda -->
+                        <Button fx:id="pausar" mnemonicParsing="false"
+                                onAction="#pausarAction" text="Pausar"
+                                styleClass="btn-secundario" maxWidth="Infinity" />
+
+                        <Button fx:id="continuar" mnemonicParsing="false"
+                                onAction="#continuarAction" text="Continuar"
+                                styleClass="btn-primario" maxWidth="Infinity" />
+                     </children>
+                  </VBox>
+
+               </children>
+            </VBox>
+         </center>
+
+         <bottom>
+            <HBox alignment="CENTER_LEFT" styleClass="rodape">
+               <padding>
+                  <Insets top="14.0" right="20.0" bottom="16.0" left="28.0" />
+               </padding>
+               <children>
+                  <VBox spacing="2.0">
+                     <children>
+                        <Label text="Estudado nesta sessão" styleClass="rotulo" />
+                        <Label fx:id="labelSessao" text="00:00" styleClass="valor-sessao" />
+                     </children>
+                  </VBox>
+
+                  <Region HBox.hgrow="ALWAYS" />
+
+                  <Button fx:id="pararEstudo" mnemonicParsing="false"
+                          onAction="#pararEstudoAction" text="Parar de estudar"
+                          styleClass="btn-texto" />
+               </children>
+            </HBox>
+         </bottom>
+
+      </BorderPane>
+
+      <!-- Painel do checklist (escondido até clicar no botão) -->
+      <VBox fx:id="painelChecklist" managed="false" visible="false"
+            prefWidth="300.0" minWidth="300.0" maxWidth="300.0"
+            spacing="14.0" styleClass="painel-checklist">
+         <padding>
+            <Insets top="20.0" right="16.0" bottom="20.0" left="18.0" />
+         </padding>
 
          <children>
+            <Label text="Checklist" styleClass="titulo-painel" />
 
-            <Label fx:id="labelTempo" text="Label">
-               <VBox.margin>
-                  <Insets />
-               </VBox.margin>
-            </Label>
-
-            <HBox alignment="CENTER"
-                  prefHeight="100.0"
-                  prefWidth="200.0"
-                  spacing="50.0">
-
+            <HBox spacing="8.0">
                <children>
-                  <Button fx:id="descansar"
-                          mnemonicParsing="false"
-                          onAction="#descansarAction"
-                          text="Descansar" />
-
-                  <Button fx:id="voltarEstudar"
-                          mnemonicParsing="false"
-                          onAction="#voltarEstudarAction"
-                          text="Voltar a Estudar" />
-
-                  <Button fx:id="estudar"
-                          mnemonicParsing="false"
-                          onAction="#estudarAction"
-                          text="Continuar Estudando" />
-
-                  <Button fx:id="comecar"
-                          mnemonicParsing="false"
-                          onAction="#comecarAction"
-                          text="Iniciar estudos" />
-
-                  <Button fx:id="pausar"
-                          mnemonicParsing="false"
-                          onAction="#pausarAction"
-                          text="Pausar" />
-
-                  <Button fx:id="continuar"
-                          mnemonicParsing="false"
-                          onAction="#continuarAction"
-                          text="Continuar" />
+                  <TextField fx:id="novaTarefa" onAction="#adicionarTarefaAction"
+                             promptText="Nova tarefa" HBox.hgrow="ALWAYS" />
+                  <Button mnemonicParsing="false" onAction="#adicionarTarefaAction"
+                          accessibleText="Adicionar tarefa" styleClass="btn-adicionar">
+                     <graphic>
+                        <SVGPath styleClass="icone" content="M12 5v14 M5 12h14" />
+                     </graphic>
+                     <tooltip><Tooltip text="Adicionar tarefa" /></tooltip>
+                  </Button>
                </children>
             </HBox>
 
+            <ListView fx:id="listaTarefas" VBox.vgrow="ALWAYS" />
+
+            <Button maxWidth="Infinity" mnemonicParsing="false"
+                    onAction="#limparConcluidasAction" text="Limpar concluídas"
+                    styleClass="btn-secundario" />
          </children>
-
-         <padding>
-            <Insets bottom="100.0"
-                    left="5.0"
-                    right="5.0"
-                    top="100.0" />
-         </padding>
-
       </VBox>
-
-      <!-- Botão de configurações -->
-      <Button fx:id="configuracoes"
-              mnemonicParsing="false"
-              onAction="#configuracoesAction"
-              text="⚙"
-              style="-fx-background-color: transparent; -fx-font-size: 20px;"
-              StackPane.alignment="TOP_RIGHT">
-         <StackPane.margin>
-            <Insets top="8.0" right="8.0" />
-         </StackPane.margin>
-      </Button>
 
    </children>
 
-</StackPane>
+</HBox>

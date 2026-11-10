@@ -1,109 +1,90 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
 
-<AnchorPane prefHeight="559.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaConfigController">
+<AnchorPane prefHeight="640.0" prefWidth="380.0"
+            xmlns="http://javafx.com/javafx/17.0.12"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.garciadotjar.pomodorofuleiro.controller.TelaConfigController">
 
-   <!-- BOTÃO VOLTAR -->
-   <Button fx:id="voltar" mnemonicParsing="false" onAction="#voltarAction" prefHeight="35.0" prefWidth="40.0" text="←" AnchorPane.leftAnchor="10.0" AnchorPane.topAnchor="10.0" />
+   <VBox spacing="32.0"
+         AnchorPane.topAnchor="12.0" AnchorPane.bottomAnchor="28.0"
+         AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="28.0">
 
-
-   <VBox alignment="TOP_LEFT" spacing="35.0" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="50.0">
-
-      <!-- TÍTULO -->
-      <Text text="Configurações">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Text>
-
+      <!-- Cabeçalho: voltar + título -->
+      <HBox alignment="CENTER_LEFT" spacing="10.0">
+         <children>
+            <Button fx:id="voltar" mnemonicParsing="false" onAction="#voltarAction"
+                    accessibleText="Voltar ao timer" styleClass="btn-icone">
+               <graphic>
+                  <SVGPath styleClass="icone" content="M19 12H5 M11 6l-6 6l6 6" />
+               </graphic>
+               <tooltip><Tooltip text="Voltar" /></tooltip>
+            </Button>
+            <Label text="Configurações" styleClass="titulo-tela" />
+         </children>
+      </HBox>
 
       <!-- TEMPO DE ESTUDO -->
       <VBox spacing="10.0">
-
-         <Text text="Tempo de Estudo">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Text>
-
-         <HBox alignment="CENTER_LEFT" spacing="8.0">
-
-            <Spinner fx:id="horaEstudo" prefHeight="30.0" prefWidth="80.0" />
-
-            <Text text="h">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-
-            <Spinner fx:id="minutoEstudo" prefHeight="30.0" prefWidth="80.0" />
-            <Text layoutX="98.0" layoutY="32.0" text="m">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-
-         </HBox>
-
+         <children>
+            <Label text="Tempo de estudo" styleClass="secao-titulo" />
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <children>
+                  <Spinner fx:id="horaEstudo" editable="true" prefWidth="132.0"
+                           styleClass="split-arrows-horizontal" />
+                  <Label text="h" styleClass="unidade" />
+                  <Spinner fx:id="minutoEstudo" editable="true" prefWidth="132.0"
+                           styleClass="split-arrows-horizontal" />
+                  <Label text="m" styleClass="unidade" />
+               </children>
+            </HBox>
+         </children>
       </VBox>
-
 
       <!-- TEMPO DE DESCANSO -->
       <VBox spacing="10.0">
-
-         <Text text="Tempo de Descanso">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Text>
-
-         <HBox alignment="CENTER_LEFT" spacing="8.0">
-
-            <Spinner fx:id="horaDescanso" prefHeight="30.0" prefWidth="80.0" />
-
-            <Text text="h">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-
-            <Spinner fx:id="minutoDescanso" prefHeight="30.0" prefWidth="80.0" />
-            <Text layoutX="98.0" layoutY="32.0" text="m">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-
-         </HBox>
-
+         <children>
+            <Label text="Tempo de descanso" styleClass="secao-titulo" />
+            <HBox alignment="CENTER_LEFT" spacing="8.0">
+               <children>
+                  <Spinner fx:id="horaDescanso" editable="true" prefWidth="132.0"
+                           styleClass="split-arrows-horizontal" />
+                  <Label text="h" styleClass="unidade" />
+                  <Spinner fx:id="minutoDescanso" editable="true" prefWidth="132.0"
+                           styleClass="split-arrows-horizontal" />
+                  <Label text="m" styleClass="unidade" />
+               </children>
+            </HBox>
+         </children>
       </VBox>
-
 
       <!-- VOLUME DO ALARME -->
       <VBox spacing="10.0">
-
-         <Text text="Volume do Alarme">
-            <font>
-               <Font size="16.0" />
-            </font>
-         </Text>
-
-         <HBox alignment="CENTER_LEFT" spacing="10.0">
-
-            <Slider fx:id="volumeAlarme" max="100" min="0" prefWidth="180.0" showTickLabels="false" showTickMarks="false" value="50" />
-
-            <Label fx:id="valorVolume" text="50%" />
-
-         </HBox>
-
+         <children>
+            <Label text="Volume do alarme" styleClass="secao-titulo" />
+            <HBox alignment="CENTER_LEFT" spacing="16.0">
+               <children>
+                  <Slider fx:id="volumeAlarme" max="100" min="0" value="50"
+                          showTickLabels="false" showTickMarks="false"
+                          HBox.hgrow="ALWAYS" />
+                  <Label fx:id="valorVolume" text="50%" styleClass="valor-grande"
+                         minWidth="64.0" alignment="CENTER_RIGHT" />
+               </children>
+            </HBox>
+         </children>
       </VBox>
 
+      <!-- empurra o botão para o rodapé da tela -->
+      <Region VBox.vgrow="ALWAYS" />
 
       <!-- BOTÃO SALVAR -->
-      <Button fx:id="salvarConfiguracoes" mnemonicParsing="false" onAction="#salvarConfiguracoesAction" prefHeight="35.0" prefWidth="242.0" text="Salvar Configurações" />
+      <Button fx:id="salvarConfiguracoes" mnemonicParsing="false"
+              onAction="#salvarConfiguracoesAction" text="Salvar configurações"
+              styleClass="btn-primario" maxWidth="Infinity" />
 
    </VBox>
 

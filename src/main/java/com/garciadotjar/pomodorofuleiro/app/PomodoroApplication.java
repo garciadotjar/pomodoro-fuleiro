@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 
@@ -21,14 +22,19 @@ public class PomodoroApplication extends Application {
     private TelaInicialController telaInicialController;
     private TelaConfigController telaConfigController;
 
+    private static final double LARGURA = 380;
+    private static final double ALTURA = 640;
+    private static final Color FUNDO = Color.web("#0F0B17");
+
     private Scene sceneInicial;
     private Scene sceneConfig;
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Pomodoro Fuleiro");
         stage.setResizable(false);
-        sceneInicial = new Scene(telaInicial(), 322, 559);
-        sceneConfig = new Scene(telaConfig(), 322, 559);
+        carregarFontes();
+        sceneInicial = new Scene(telaInicial(), LARGURA, ALTURA, FUNDO);
+        sceneConfig = new Scene(telaConfig(), LARGURA, ALTURA, FUNDO);
         telaInicialController.setApplication(this);
         telaConfigController.setApplication(this);
         sceneInicial.getStylesheets().add(Objects.requireNonNull(getClass().getResource("main.css")).toExternalForm());
@@ -44,6 +50,17 @@ public class PomodoroApplication extends Application {
         stage.show();
     }
 
+
+    private void carregarFontes() {
+        for (String arquivo : new String[]{"JetBrainsMono-Regular.ttf", "JetBrainsMono-Bold.ttf"}) {
+            var url = getClass().getResource("fonts/" + arquivo);
+            if (url == null) {
+                System.err.println("Fonte não encontrada: fonts/" + arquivo);
+                continue;
+            }
+            Font.loadFont(url.toExternalForm(), 14);
+        }
+    }
 
     // ------------- telas
 

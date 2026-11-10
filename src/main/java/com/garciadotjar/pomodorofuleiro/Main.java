@@ -14,16 +14,6 @@ public class Main {
     public static void main(String[] args) {
         configManager.importConfig();
         Application.launch(PomodoroApplication.class, args);
-        /*
-        A FAZER:
-        LABEL PRA MARCAR EM QUE ETAPA DO ESTUDO ESTAMOS (estudando, descansando...)
-        FAZER O CONTADOR DE TEMPO TOTAL DE ESTUDO
-
-        (talvez) Mostrar musica sendo escutada no spotify no app
-        (talvez) to-do list
-
-        DESIGN DA INTERFACE
-        */
     }
 
     public static ConfigManager getConfigManager() {

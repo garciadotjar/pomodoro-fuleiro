@@ -3,13 +3,16 @@ package com.garciadotjar.pomodorofuleiro.controller;
 import com.garciadotjar.pomodorofuleiro.Main;
 import com.garciadotjar.pomodorofuleiro.app.PomodoroApplication;
 import com.garciadotjar.pomodorofuleiro.config.ConfigManager;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.SpinnerValueFactory;
 
 import java.time.Duration;
+import java.util.Locale;
 
 public class TelaConfigController {
 
@@ -106,8 +109,27 @@ public class TelaConfigController {
     private void configurarVolume() {
 
         volumeAlarme.valueProperty().addListener(
-                (observable, antigoValor, novoValor) -> atualizarLabelVolume()
+                (observable, antigoValor, novoValor) -> {
+                    atualizarLabelVolume();
+                    atualizarTrilhaVolume();
+                }
         );
+
+        // ".track" só existe depois que a skin do slider é criada
+        volumeAlarme.skinProperty().addListener((obs, antiga, nova) -> atualizarTrilhaVolume());
+        Platform.runLater(this::atualizarTrilhaVolume);
+    }
+
+    private void atualizarTrilhaVolume() {
+        Node trilha = volumeAlarme.lookup(".track");
+        if (trilha == null) {
+            return;
+        }
+        double pct = (volumeAlarme.getValue() - volumeAlarme.getMin())
+                / (volumeAlarme.getMax() - volumeAlarme.getMin()) * 100.0;
+        trilha.setStyle(String.format(Locale.ROOT,
+                "-fx-background-color: linear-gradient(to right, -accent 0%%, -accent %.1f%%, -line %.1f%%, -line 100%%);",
+                pct, pct));
     }
 
 

@@ -1,0 +1,350 @@
+/*ps: Grande parte do CSS foi gerado pelo Claude*/
+
+.root {
+    /* superfícies */
+    -bg:         #0F0B17;
+    -surface:    #181222;
+    -surface-2:  #221A30;
+    -line:       #2E2440;
+    -line-strong:#41355A;
+
+    /* texto */
+    -text:   #EEEAF7;
+    -muted:  #A196B8;
+    -faint:  #8A7FA0;
+
+    /* roxos: um por estado, nunca só a cor para informar (sempre há texto) */
+    -accent:       #A98BF5;
+    -accent-hover: #B9A0F8;
+    -accent-press: #8E6FE8;
+    -on-accent:    #150F22;
+    -rest:         #CDBEF7;
+    -extra:        #DB8FEA;
+
+    -fx-base: #181222;
+    -fx-background: #0F0B17;
+    -fx-background-color: -bg;
+    -fx-font-family: "JetBrains Mono";
+    -fx-font-size: 14px;
+    -fx-text-fill: -text;
+    -fx-focus-color: -accent;
+    -fx-faint-focus-color: transparent;
+    -fx-accent: -accent;
+}
+
+.label { -fx-text-fill: -text; }
+
+/* ---------- Tela inicial: cabeçalho ---------- */
+
+.marca {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -muted;
+}
+
+.btn-icone {
+    -fx-background-color: transparent;
+    -fx-background-radius: 12;
+    -fx-background-insets: 0;
+    -fx-padding: 10;
+    -fx-min-width: 44px;
+    -fx-min-height: 44px;
+    -fx-cursor: hand;
+}
+.btn-icone:hover   { -fx-background-color: -surface-2; }
+.btn-icone:pressed { -fx-background-color: -line; }
+.btn-icone:focused { -fx-border-color: -accent; -fx-border-width: 2; -fx-border-radius: 12; }
+
+.icone {
+    -fx-fill: transparent;
+    -fx-stroke: -muted;
+    -fx-stroke-width: 2;
+    -fx-stroke-line-cap: round;
+    -fx-stroke-line-join: round;
+}
+.btn-icone:hover .icone { -fx-stroke: -text; }
+
+/* ---------- Anel e timer ---------- */
+
+.anel-trilha {
+    -fx-fill: transparent;
+    -fx-stroke: -line;
+    -fx-stroke-width: 8;
+}
+
+.anel-progresso {
+    -fx-fill: transparent;
+    -fx-stroke: -accent;
+    -fx-stroke-width: 8;
+    -fx-stroke-line-cap: round;
+}
+.anel-progresso.modo-pronto   { -fx-stroke: -line-strong; }
+.anel-progresso.modo-estudo   { -fx-stroke: -accent; }
+.anel-progresso.modo-descanso { -fx-stroke: -rest; }
+.anel-progresso.modo-extra    { -fx-stroke: -extra; }
+.anel-progresso.modo-pausa    { -fx-stroke: -faint; }
+.anel-progresso.modo-fim      { -fx-stroke: -accent; }
+
+.tempo {
+    -fx-font-size: 72px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text;
+}
+/* hh:mm:ss tem 8 caracteres; precisa caber dentro do anel */
+.tempo.tempo-longo { -fx-font-size: 46px; }
+
+.etapa {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -accent;
+}
+.etapa.modo-pronto   { -fx-text-fill: -muted; }
+.etapa.modo-estudo   { -fx-text-fill: -accent; }
+.etapa.modo-descanso { -fx-text-fill: -rest; }
+.etapa.modo-extra    { -fx-text-fill: -extra; }
+.etapa.modo-pausa    { -fx-text-fill: -muted; }
+.etapa.modo-fim      { -fx-text-fill: -accent; }
+
+/* ---------- Botões de ação ---------- */
+
+.btn-primario, .btn-secundario {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 14;
+    -fx-background-insets: 0;
+    -fx-border-radius: 14;
+    -fx-border-insets: 0;
+    -fx-padding: 0 20 0 20;
+    -fx-min-height: 52px;
+    -fx-pref-height: 52px;
+    -fx-max-width: infinity;
+    -fx-cursor: hand;
+}
+
+.btn-primario {
+    -fx-background-color: -accent;
+    -fx-text-fill: -on-accent;
+}
+.btn-primario:hover   { -fx-background-color: -accent-hover; }
+.btn-primario:pressed { -fx-background-color: -accent-press; }
+.btn-primario:focused { -fx-border-color: -text; -fx-border-width: 2; }
+
+.btn-secundario {
+    -fx-background-color: transparent;
+    -fx-border-color: -line-strong;
+    -fx-border-width: 1.5;
+    -fx-text-fill: -text;
+}
+.btn-secundario:hover   { -fx-background-color: -surface-2; -fx-border-color: -accent; }
+.btn-secundario:pressed { -fx-background-color: -line; }
+.btn-secundario:focused { -fx-border-color: -accent; -fx-border-width: 2; }
+
+/* ação terciária: existe, mas não compete com o timer */
+.btn-texto {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-text-fill: -muted;
+    -fx-font-size: 13px;
+    -fx-padding: 8 4 8 12;
+    -fx-cursor: hand;
+}
+.btn-texto:hover   { -fx-text-fill: -text; -fx-underline: true; }
+.btn-texto:focused { -fx-text-fill: -text; -fx-underline: true; }
+
+/* ---------- Rodapé: tempo estudado ---------- */
+
+.rodape {
+    -fx-border-color: -line;
+    -fx-border-width: 1 0 0 0;
+}
+.rotulo {
+    -fx-font-size: 12px;
+    -fx-text-fill: -muted;
+}
+.valor-sessao {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text;
+}
+
+/* ---------- Checklist ---------- */
+
+.painel-checklist {
+    -fx-background-color: -surface;
+    -fx-border-color: -line;
+    -fx-border-width: 0 0 0 1;
+}
+.titulo-painel {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+}
+
+.text-field {
+    -fx-background-color: -surface-2;
+    -fx-background-insets: 0;
+    -fx-background-radius: 12;
+    -fx-border-color: transparent;
+    -fx-border-radius: 12;
+    -fx-border-width: 1.5;
+    -fx-text-fill: -text;
+    -fx-prompt-text-fill: -faint;
+    -fx-highlight-fill: rgba(169,139,245,0.35);
+    -fx-highlight-text-fill: -text;
+    -fx-padding: 0 14 0 14;
+    -fx-min-height: 44px;
+    -fx-pref-height: 44px;
+    -fx-font-size: 14px;
+}
+.text-field:focused { -fx-border-color: -accent; }
+
+.btn-adicionar {
+    -fx-background-color: -accent;
+    -fx-background-radius: 12;
+    -fx-background-insets: 0;
+    -fx-min-width: 44px;
+    -fx-min-height: 44px;
+    -fx-pref-width: 44px;
+    -fx-pref-height: 44px;
+    -fx-padding: 0;
+    -fx-cursor: hand;
+}
+.btn-adicionar:hover   { -fx-background-color: -accent-hover; }
+.btn-adicionar:pressed { -fx-background-color: -accent-press; }
+.btn-adicionar:focused { -fx-border-color: -text; -fx-border-width: 2; -fx-border-radius: 12; }
+.btn-adicionar .icone  { -fx-stroke: -on-accent; -fx-stroke-width: 2.4; }
+
+.list-view {
+    -fx-background-color: transparent;
+    -fx-control-inner-background: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+.list-view:focused { -fx-background-color: transparent; }
+.list-cell {
+    -fx-background-color: transparent;
+    -fx-padding: 8 6 8 6;
+    -fx-text-fill: -text;
+}
+.list-cell:filled:hover { -fx-background-color: -surface-2; -fx-background-radius: 10; }
+.list-cell:empty { -fx-background-color: transparent; }
+.list-view .placeholder .label {
+    -fx-text-fill: -faint;
+    -fx-font-size: 13px;
+}
+
+.check-box {
+    -fx-text-fill: -text;
+    -fx-font-size: 14px;
+    -fx-label-padding: 0 0 0 10;
+}
+.check-box .box {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 7;
+    -fx-border-color: -line-strong;
+    -fx-border-width: 1.5;
+    -fx-border-radius: 7;
+    -fx-padding: 4;
+}
+.check-box:hover .box { -fx-border-color: -accent; }
+.check-box:selected .box {
+    -fx-background-color: -accent;
+    -fx-border-color: -accent;
+}
+.check-box .mark { -fx-background-color: -on-accent; }
+.check-box:selected { -fx-text-fill: -muted; }
+.check-box:selected > .text { -fx-strikethrough: true; }
+.check-box:focused .box { -fx-border-color: -text; }
+
+.scroll-bar { -fx-background-color: transparent; -fx-padding: 0; }
+.scroll-bar:vertical   { -fx-pref-width: 8px; }
+.scroll-bar:horizontal { -fx-pref-height: 8px; }
+.scroll-bar .track     { -fx-background-color: transparent; -fx-border-color: transparent; }
+.scroll-bar .thumb {
+    -fx-background-color: -line-strong;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+}
+.scroll-bar .thumb:hover { -fx-background-color: -faint; }
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-padding: 0; -fx-pref-height: 0; -fx-pref-width: 0; -fx-background-color: transparent;
+}
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow { -fx-shape: " "; -fx-padding: 0; }
+
+/* ---------- Tela de configurações ---------- */
+
+.titulo-tela {
+    -fx-font-size: 26px;
+    -fx-font-weight: bold;
+}
+.secao-titulo {
+    -fx-font-size: 13px;
+    -fx-text-fill: -muted;
+}
+.unidade {
+    -fx-font-size: 14px;
+    -fx-text-fill: -muted;
+}
+.valor-grande {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: -text;
+}
+
+.spinner {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-pref-height: 52px;
+    -fx-min-height: 52px;
+}
+.spinner .text-field {
+    -fx-alignment: center;
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 0;
+    -fx-border-radius: 0;
+    -fx-min-height: 52px;
+    -fx-pref-height: 52px;
+    -fx-border-color: transparent;
+}
+.spinner .text-field:focused { -fx-border-color: -accent; }
+.spinner .increment-arrow-button, .spinner .decrement-arrow-button {
+    -fx-background-color: -surface-2;
+    -fx-background-insets: 0;
+    -fx-padding: 0 14 0 14;
+    -fx-cursor: hand;
+}
+.spinner .decrement-arrow-button { -fx-background-radius: 12 0 0 12; }
+.spinner .increment-arrow-button { -fx-background-radius: 0 12 12 0; }
+.spinner .increment-arrow-button:hover, .spinner .decrement-arrow-button:hover { -fx-background-color: -line; }
+.spinner .increment-arrow-button:pressed, .spinner .decrement-arrow-button:pressed { -fx-background-color: -line-strong; }
+.spinner .increment-arrow-button .increment-arrow,
+.spinner .decrement-arrow-button .decrement-arrow { -fx-background-color: -muted; }
+.spinner .increment-arrow-button:hover .increment-arrow,
+.spinner .decrement-arrow-button:hover .decrement-arrow { -fx-background-color: -text; }
+
+.slider .track {
+    -fx-background-color: -line;
+    -fx-background-insets: 0;
+    -fx-background-radius: 4;
+    -fx-pref-height: 8px;
+    -fx-min-height: 8px;
+    -fx-max-height: 8px;
+}
+.slider .thumb {
+    -fx-background-color: -accent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 12;
+    -fx-pref-width: 22px;
+    -fx-pref-height: 22px;
+    -fx-cursor: hand;
+}
+.slider:hover .thumb, .slider:focused .thumb { -fx-background-color: -accent-hover; }
+
+.tooltip {
+    -fx-background-color: -surface-2;
+    -fx-text-fill: -text;
+    -fx-font-size: 12px;
+    -fx-background-radius: 8;
+    -fx-padding: 6 10 6 10;
+}

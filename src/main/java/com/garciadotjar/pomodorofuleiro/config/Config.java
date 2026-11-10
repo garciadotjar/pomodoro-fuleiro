@@ -1,11 +1,14 @@
 package com.garciadotjar.pomodorofuleiro.config;
 
 import java.time.Duration;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Config {
     private Duration tempoEstudo;
     private Duration tempoLivre;
     private int volume;
+    private List<Tarefa> tarefas = new ArrayList<>();
 
     public Config() {
         this.tempoEstudo = Duration.ofMinutes(25);
@@ -37,6 +40,15 @@ public class Config {
 
     public int getVolume() {
         return volume;
+    }
+
+    public List<Tarefa> getTarefas() {
+        return tarefas;
+    }
+
+    public void setTarefas(List<Tarefa> tarefas) {
+        // o JSON pode trazer null
+        this.tarefas = tarefas == null ? new ArrayList<>() : tarefas;
     }
 
     public void setVolume(int volume) {

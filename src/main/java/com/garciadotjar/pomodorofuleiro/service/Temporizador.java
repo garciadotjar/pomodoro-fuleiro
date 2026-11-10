@@ -47,7 +47,7 @@ public class Temporizador {
         tarefa = scheduler.scheduleAtFixedRate(() -> {
 
             // Quanto tempo já passou
-            long decorrido = System.nanoTime() - inicio + 1_000_000_000;
+            long decorrido = System.nanoTime() - inicio;
 
             // Quanto tempo ainda falta
             long restanteNanos =
@@ -62,6 +62,7 @@ public class Temporizador {
             // Atualiza a interface JavaFX
             Platform.runLater(() -> {
                 label.setText(formatar(segundosRestantes));
+                telaInicialController.atualizarProgresso(restanteNanos);
             });
 
             // Timer acabou

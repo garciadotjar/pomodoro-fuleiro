@@ -17,30 +17,35 @@ public class Cronometro {
 
     private ScheduledFuture<?> tarefa;
 
+    private long inicio;
+    private long acumuladoNanos;
+
     public Cronometro(Label label) {
         this.label = label;
     }
 
     public void iniciar() {
 
-        final long inicio = System.nanoTime();
+        if (tarefa != null) {
+            return; // já está rodando
+        }
+
+        final long inicioTarefa = System.nanoTime() - acumuladoNanos;
+        inicio = inicioTarefa;
 
         tarefa = scheduler.scheduleAtFixedRate(() -> {
 
-            long decorrido = System.nanoTime() - inicio;
-
-            long segundosRestantes =
-                    Math.max(0, (long) Math.ceil(
-                            decorrido / 1_000_000_000.0
-                    ));
+            long segundos = arredondar(System.nanoTime() - inicioTarefa);
 
             Platform.runLater(() -> {
-                label.setText(formatar(segundosRestantes));
+                label.setText(formatar(segundos));
             });
 
-
-
         }, 0, 1, TimeUnit.SECONDS);
+    }
+
+    private static long arredondar(long nanos) {
+        return Math.round(nanos / 1_000_000_000.0);
     }
 
     private String formatar(long segundos) {
@@ -56,10 +61,22 @@ public class Cronometro {
     }
 
     public void parar() {
-        if (tarefa != null) {
-            tarefa.cancel(true);
+        if (tarefa == null) {
+            return;
         }
+        acumuladoNanos = System.nanoTime() - inicio;
+        tarefa.cancel(true);
+        tarefa = null;
+        // o último tick pode ter sido há quase 1s
+        label.setText(formatar(arredondar(acumuladoNanos)));
     }
+
+    public void zerar() {
+        parar();
+        acumuladoNanos = 0;
+        label.setText(formatar(0));
+    }
+
     public void encerrar() {
         if (tarefa != null) {
             tarefa.cancel(true);
