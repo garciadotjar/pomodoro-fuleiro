@@ -59,7 +59,7 @@ Se você está muito focado em algo, está gostando do conteúdo, ou simplesment
 
 ## Como baixar
 
-Os instaladores e o `.jar` estão na página de **[Releases](https://github.com/garciadotjar/pomodoro-fuleiro/releases)**.
+Os instaladores estão na página de **[Releases](https://github.com/garciadotjar/pomodoro-fuleiro/releases)**.
 
 | Formato | Para quem | Como instalar / rodar                               |
 |---|---|-----------------------------------------------------|
